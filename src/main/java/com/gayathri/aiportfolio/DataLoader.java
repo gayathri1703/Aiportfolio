@@ -17,22 +17,22 @@ public class DataLoader {
             repository.save(new Project(
                     "Fashionexus",
                     "AI virtual dress try-on system",
-                    "https://github.com/gayathri1703/Fashionexus",
+                    "https://github.com/gayathri1703/FASHIONEUS",
                     "https://images.unsplash.com/photo-1523381210434-271e8be1f52b"
             ));
 
             repository.save(new Project(
                     "Tourist Guide",
                     "Tourist recommendation system",
-                    "https://github.com/gayathri1703/TouristGuide",
-                    "https://images.unsplash.com/photo-1523381210434-271e8be1f52b"
+                    "https://github.com/gayathri1703/tourist-guide",
+                    "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
             ));
 
             repository.save(new Project(
                     "Stocksence",
                     "Stock analysis platform",
-                    "https://github.com/gayathri1703/Stocksence",
-                    "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+                    "https://github.com/gayathri1703/stocksense-learn-hub",
+                    "https://images.unsplash.com/photo-1518770660439-4636190af475"
             ));
 
             repository.save(new Project(
