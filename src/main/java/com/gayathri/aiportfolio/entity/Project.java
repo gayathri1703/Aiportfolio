@@ -5,60 +5,70 @@ import jakarta.persistence.*;
 @Entity
 public class Project {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-private String title;
+    private String title;
 
-@Column(length = 1000)
-private String description;
+    @Column(length = 1000)
+    private String description;
 
-private String githubLink;
+    private String githubLink;
 
-private String imageUrl;
+    private String imageUrl;
 
+    // Default constructor (required by JPA)
+    public Project() {
+    }
 
-// getters setters
+    // Constructor used in DataLoader
+    public Project(String title, String description, String githubLink, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.githubLink = githubLink;
+        this.imageUrl = imageUrl;
+    }
 
-public Long getId(){
-return id;
-}
+    // Getters and Setters
 
-public void setId(Long id){
-this.id=id;
-}
+    public Long getId() {
+        return id;
+    }
 
-public String getTitle(){
-return title;
-}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-public void setTitle(String title){
-this.title=title;
-}
+    public String getTitle() {
+        return title;
+    }
 
-public String getDescription(){
-return description;
-}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-public void setDescription(String description){
-this.description=description;
-}
+    public String getDescription() {
+        return description;
+    }
 
-public String getGithubLink(){
-return githubLink;
-}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-public void setGithubLink(String githubLink){
-this.githubLink=githubLink;
-}
+    public String getGithubLink() {
+        return githubLink;
+    }
 
-public String getImageUrl(){
-return imageUrl;
-}
+    public void setGithubLink(String githubLink) {
+        this.githubLink = githubLink;
+    }
 
-public void setImageUrl(String imageUrl){
-this.imageUrl=imageUrl;
-}
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

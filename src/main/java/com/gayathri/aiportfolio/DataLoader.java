@@ -4,6 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.gayathri.aiportfolio.repository.ProjectRepository;
+import com.gayathri.aiportfolio.entity.Project;
+
 @Configuration
 public class DataLoader {
 
@@ -20,25 +23,24 @@ public class DataLoader {
 
             repository.save(new Project(
                     "Tourist Guide",
-                    "Tourist recommendation web application",
+                    "Tourist recommendation system",
                     "https://github.com/gayathri1703/TouristGuide",
                     "https://via.placeholder.com/400"
             ));
 
             repository.save(new Project(
                     "Stocksence",
-                    "Stock analysis and prediction platform",
+                    "Stock analysis platform",
                     "https://github.com/gayathri1703/Stocksence",
                     "https://via.placeholder.com/400"
             ));
 
             repository.save(new Project(
                     "AI Portfolio",
-                    "Spring Boot developer portfolio website",
+                    "Spring Boot developer portfolio",
                     "https://github.com/gayathri1703/Aiportfolio",
                     "https://via.placeholder.com/400"
             ));
-
         };
     }
 }
