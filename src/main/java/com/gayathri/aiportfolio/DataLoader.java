@@ -33,7 +33,7 @@ public class DataLoader {
                     "Stock analysis platform",
                     "https://github.com/gayathri1703/stocksense-learn-hub",
                     "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
-                    "https://images.unsplash.com/photo-1518770660439-4636190af475"
+                    
             ));
 
             repository.save(new Project(
