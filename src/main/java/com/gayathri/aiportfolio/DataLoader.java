@@ -32,6 +32,7 @@ public class DataLoader {
                     "Stocksence",
                     "Stock analysis platform",
                     "https://github.com/gayathri1703/stocksense-learn-hub",
+                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
                     "https://images.unsplash.com/photo-1518770660439-4636190af475"
             ));
 
@@ -39,7 +40,7 @@ public class DataLoader {
                     "AI Portfolio",
                     "Spring Boot developer portfolio",
                     "https://github.com/gayathri1703/Aiportfolio",
-                    "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3"
+                    "https://images.unsplash.com/photo-1518770660439-4636190af475"
             ));
         };
     }
