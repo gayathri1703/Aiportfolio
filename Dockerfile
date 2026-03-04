@@ -1,18 +1,16 @@
+# Build stage
+FROM maven:3.9.9-eclipse-temurin-21 AS build
+
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Run stage
 FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
+COPY --from=build /app/target/aiportfolio-0.0.1-SNAPSHOT.jar app.jar
 
-# Copy files
-COPY . .
-
-# Give permission to mvnw
-RUN chmod +x ./mvnw
-
-# Build Spring Boot jar
-RUN ./mvnw clean package -DskipTests
-
-# Expose port
 EXPOSE 8080
 
-# Start application
-CMD ["java","-jar","target/aiportfolio-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-jar","app.jar"]
