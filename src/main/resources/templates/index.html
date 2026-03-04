@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Gayathri | AI Portfolio</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Gayathri Prabakaran AI Developer Portfolio">
+
+<link rel="icon" href="/images/profile.jpg">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">Gayathri Prabakaran</div>
+
+<ul>
+
+<li><a href="/">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#skills">Skills</a></li>
+
+<li><a href="#projects">Projects</a></li>
+
+<li><a href="/contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+<!-- SUCCESS MESSAGE (ONLY ONE) -->
+
+<div th:if="${param.success}"
+style="background:#00d4ff;color:black;padding:10px;margin:10px;text-align:center;border-radius:8px;">
+
+✅ Message Sent Successfully!
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+<img src="/images/gayathri.jpg" class="profile-img">
+<h1>AI Developer | Java Backend Engineer</h1>
+
+<p>
+
+AI-Powered Full Stack Developer specializing in scalable systems and modern web applications.
+
+</p>
+
+<div class="buttons">
+
+<a href="#projects" class="primary-btn">
+
+View Projects
+
+</a>
+
+<a href="/contact" class="secondary-btn">
+
+Contact Me
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="about">
+
+<h2>About Me</h2>
+
+<p>
+
+Passionate developer focused on AI integration, backend engineering,
+
+and creating impactful digital products using Spring Boot and modern technologies.
+
+</p>
+
+</section>
+
+
+
+<!-- SKILLS -->
+
+<section id="skills" class="skills">
+
+<h2>Core Skills</h2>
+
+<div class="skills-grid">
+
+<div class="card">Java</div>
+
+<div class="card">Spring Boot</div>
+
+<div class="card">DSA</div>
+
+<div class="card">Python</div>
+
+<div class="card">HTML / CSS</div>
+
+<div class="card">AI Integration</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PROJECTS -->
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+
+<h2>My Projects 🚀</h2>
+
+<div class="skills-grid">
+
+<div class="project-card"
+     th:each="p : ${projects}">
+
+    <img th:src="@{${p.imageUrl}}"
+         alt="Project Image"
+         class="project-img">
+
+    <h3 th:text="${p.title}"></h3>
+
+    <p th:text="${p.description}"></p>
+
+    <a th:href="${p.githubLink}"
+       target="_blank">
+        View Github
+    </a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+<h2>Contact Me</h2>
+
+<p>
+
+Email :
+
+<a href="mailto:gayathripraba2007@gmail.com">
+
+gayathripraba2007@gmail.com
+
+</a>
+
+</p>
+
+
+<p>
+
+GitHub :
+
+<a href="https://github.com/gayathri1703"
+
+target="_blank">
+
+github.com/gayathri1703
+
+</a>
+
+</p>
+
+
+<p>
+
+LinkedIn :
+
+<a href="https://www.linkedin.com/in/gayathri-prabakaran-27b7b432a"
+
+target="_blank">
+
+linkedin.com/in/gayathri-prabakaran
+
+</a>
+
+</p>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+
+© 2026 Gayathri Prabakaran • Built with Spring Boot
+
+</p>
+
+<p>
+
+<a href="mailto:gayathripraba2007@gmail.com">
+
+Email
+
+</a> |
+
+<a href="https://github.com/gayathri1703"
+
+target="_blank">
+
+GitHub
+
+</a> |
+
+<a href="https://www.linkedin.com/in/gayathri-prabakaran-27b7b432a"
+
+target="_blank">
+
+LinkedIn
+
+</a>
+
+</p>
+
+</footer>
+
+<!-- ================= AI ASSISTANT ================= -->
+
+<button id="aiOpen">
+
+🤖 AI Assistant
+
+</button>
+
+
+<div id="aiPanel">
+
+<div id="chatHeader">
+
+Gayathri AI Assistant 🤖
+
+<span id="closeAI">✖</span>
+
+</div>
+
+
+<div id="chatArea"></div>
+
+
+<div id="chatInput">
+
+<input id="userMessage"
+
+placeholder="Ask about projects, skills...">
+
+<button id="sendBtn">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+
+<style>
+
+/* OPEN BUTTON */
+
+#aiOpen{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+background:#00d4ff;
+
+border:none;
+
+padding:15px 22px;
+
+border-radius:12px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+z-index:999;
+
+}
+
+
+/* PANEL */
+
+#aiPanel{
+
+position:fixed;
+
+top:0;
+
+right:-420px;
+
+width:400px;
+
+height:100%;
+
+background:rgba(255,255,255,0.15);
+
+backdrop-filter:blur(18px);
+
+box-shadow:-5px 0 25px rgba(0,0,0,0.4);
+
+transition:.5s;
+
+display:flex;
+
+flex-direction:column;
+
+z-index:9999;
+
+}
+
+
+/* HEADER */
+
+#chatHeader{
+
+background:#00d4ff;
+
+color:black;
+
+padding:15px;
+
+font-weight:bold;
+
+display:flex;
+
+justify-content:space-between;
+
+}
+
+
+/* CLOSE */
+
+#closeAI{
+
+cursor:pointer;
+
+}
+
+
+/* CHAT AREA */
+
+#chatArea{
+
+flex:1;
+
+overflow-y:auto;
+
+padding:15px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+
+/* USER MESSAGE */
+
+.user{
+
+align-self:flex-end;
+
+background:#00d4ff;
+
+color:black;
+
+padding:10px;
+
+border-radius:12px;
+
+max-width:80%;
+
+}
+
+
+/* AI MESSAGE */
+
+.ai{
+
+align-self:flex-start;
+
+background:#ffffff;
+
+color:black;
+
+padding:10px;
+
+border-radius:12px;
+
+max-width:80%;
+
+}
+
+
+/* INPUT */
+
+#chatInput{
+
+display:flex;
+
+padding:10px;
+
+background:white;
+
+}
+
+
+#chatInput input{
+
+flex:1;
+
+padding:10px;
+
+}
+
+
+#sendBtn{
+
+background:black;
+
+color:white;
+
+border:none;
+
+padding:10px 15px;
+
+cursor:pointer;
+
+}
+
+</style>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+// GOD MODE AUTO INTRO
+
+setTimeout(()=>{
+
+panel.style.right="0";
+
+chatArea.innerHTML+=`
+
+<div class="ai">
+
+👋 Hello Judges!
+
+I am Gayathri’s AI Assistant 🤖.
+
+She is an AI Developer specialized in:
+
+✅ Java + Spring Boot  
+✅ AI Chatbot Systems  
+✅ Fashionexus - AI Dress Trial 
+✅ Tourist Guide App 
+
+
+Ask me anything about her projects or skills!
+
+</div>
+
+`;
+
+},2000);
+
+
+const openBtn=document.getElementById("aiOpen");
+
+const panel=document.getElementById("aiPanel");
+
+const close=document.getElementById("closeAI");
+
+const send=document.getElementById("sendBtn");
+
+const chatArea=document.getElementById("chatArea");
+
+
+// OPEN
+
+openBtn.onclick=()=>{
+
+panel.style.right="0";
+
+}
+
+
+// CLOSE
+
+close.onclick=()=>{
+
+panel.style.right="-420px";
+
+}
+
+
+// SEND MESSAGE
+
+send.onclick=()=>{
+
+
+const input=document.getElementById("userMessage");
+
+const msg=input.value.trim();
+
+if(!msg) return;
+
+
+// USER BUBBLE
+
+chatArea.innerHTML+=
+
+`<div class="user">${msg}</div>`;
+
+
+// TYPING
+
+chatArea.innerHTML+=
+
+`<div class="ai" id="typing">
+
+Typing...
+
+</div>`;
+
+
+chatArea.scrollTop=
+
+chatArea.scrollHeight;
+
+
+// API CALL
+
+fetch("/ai/chat",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+
+"application/x-www-form-urlencoded"
+
+},
+
+body:"message="+msg
+
+})
+
+.then(r=>r.text())
+
+.then(data=>{
+
+
+document.getElementById("typing")
+
+.remove();
+
+
+// AI MESSAGE
+
+chatArea.innerHTML+=
+
+`<div class="ai">${data}</div>`;
+
+
+chatArea.scrollTop=
+
+chatArea.scrollHeight;
+
+});
+
+
+input.value="";
+
+
+};
+
+
+});
+
+</script>
+
+</body>
+
+</html>

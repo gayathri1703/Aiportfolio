@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Contact Messages</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+background:#f4f6f8;
+padding:30px;
+
+}
+
+h1{
+
+text-align:center;
+
+}
+
+table{
+
+width:90%;
+margin:auto;
+border-collapse:collapse;
+background:white;
+
+}
+
+th,td{
+
+padding:12px;
+border:1px solid #ddd;
+text-align:left;
+
+}
+
+th{
+
+background:#007bff;
+color:white;
+
+}
+
+tr:hover{
+
+background:#f1f1f1;
+
+}
+
+.back{
+
+display:block;
+text-align:center;
+margin-top:20px;
+
+}
+
+a{
+
+text-decoration:none;
+color:white;
+background:black;
+padding:10px 20px;
+border-radius:6px;
+
+}
+
+.delete-btn{
+
+background:red;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📩 Contact Messages</h1>
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Message</th>
+
+<th>Action</th>
+
+</tr>
+
+
+<!-- LOOP MESSAGES -->
+
+<tr th:each="msg : ${messages}">
+
+<td th:text="${msg.id}"></td>
+
+<td th:text="${msg.name}"></td>
+
+<td th:text="${msg.email}"></td>
+
+<td th:text="${msg.message}"></td>
+
+<td>
+
+<a th:href="@{/admin/delete/{id}(id=${msg.id})}"
+
+onclick="return confirm('Delete this message?');">
+
+<button style="
+background:red;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;">
+
+Delete
+
+</button>
+
+</a>
+
+</td>
+
+</tr>
+
+</table>
+
+<div class="back">
+
+<a href="/">Back To Home</a>
+
+</div>
+
+</body>
+
+</html>
